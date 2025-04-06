@@ -1,0 +1,83 @@
+MIDI CSV Format Specification
+Overview
+This defines the CSV format for midicsv (MIDI to CSV) and csvmidi (CSV to MIDI) conversion. Each line is a record with comma-separated fields, representing MIDI file data. Lines starting with # or ; are ignored as comments. Blank lines are skipped.
+
+Record Structure
+Fields: Minimum 3: Track, Time, Type, followed by type-specific parameters.
+Track: Integer, 0 for header/footer, 1+ for data tracks.
+Time: Integer, absolute MIDI clocks (ticks) from track start, 0 for meta-events without timing.
+Type: String, letters and underscores (e.g., Note_on_c), case-insensitive, no spaces or quotes.
+Sorting: Records sorted by Track (ascending), then Time (ascending). Out-of-order records cause errors.
+File Structure Records
+0, 0, Header, Format, NTracks, Division
+First record.
+Format: Integer, 0 (single track), 1 (multi-track), 2 (multi-sequence).
+NTracks: Integer, total tracks (including header/footer).
+Division: Integer, ticks per quarter note (e.g., 480).
+Track, 0, Start_track
+Marks track start, Track = 1+.
+Track, Time, End_track
+Marks track end, Time = last event’s time.
+0, 0, End_of_file
+Last record, closes file.
+Meta-Events
+Occur within tracks, optional, often at Time=0.
+Text fields use ", doubled for internal quotes (e.g., "a""b"), non-graphic as \octal (e.g., \040), \\ for literal \.
+Types:
+Track, Time, Title_t, "Text": Track/sequence title.
+Track, Time, Copyright_t, "Text": Copyright info.
+Track, Time, Instrument_name_t, "Text": Instrument name (descriptive).
+Track, Time, Marker_t, "Text": Sequence marker.
+Track, Time, Cue_point_t, "Text": Sync point.
+Track, Time, Lyric_t, "Text": Lyric text.
+Track, Time, Text_t, "Text": Generic text.
+Track, 0, Sequence_number, Number: Integer 0–65535, sequence order.
+Track, Time, MIDI_port, Number: Integer 0–255, MIDI port.
+Track, Time, Channel_prefix, Number: Integer 0–15, channel for subsequent events (255 max, >15 undefined).
+Track, Time, Time_signature, Num, Denom, Click, NotesQ: Num (int), Denom (power of 2), Click (ticks/click), NotesQ (32nd notes/24 ticks, default 8).
+Track, Time, Key_signature, Key, "Major/Minor": Key (-7 to 7), "major" or "minor".
+Track, Time, Tempo, Number: Integer 1–16777215, µs/quarter note (e.g., 500000 = 120 BPM).
+Track, 0, SMPTE_offset, Hour, Minute, Second, Frame, FracFrame: Integers: 0–23, 0–59, 0–59, 0–29, 0–99.
+Track, Time, Sequencer_specific, Length, Data...: Length (0–228), followed by Length bytes (0–255).
+Track, Time, Unknown_meta_event, Type, Length, Data...: Type (int), Length (0–228), Length bytes (0–255).
+Channel Events (suffix _c)
+Fields: Track, Time, Type, Channel, ...
+Channel: Integer 0–15.
+Types:
+Track, Time, Note_on_c, Channel, Note, Velocity: Note (0–127), Velocity (0–127, 0 = off).
+Track, Time, Note_off_c, Channel, Note, Velocity: Note (0–127), Velocity (0, typically).
+Track, Time, Pitch_bend_c, Channel, Value: Value (0–16383, 8192 = neutral).
+Track, Time, Control_c, Channel, Control_num, Value: Control_num (0–127), Value (0–127).
+Track, Time, Program_c, Channel, Program_num: Program_num (0–127, patch number).
+Track, Time, Channel_aftertouch_c, Channel, Value: Value (0–127, monophonic pressure).
+Track, Time, Poly_aftertouch_c, Channel, Note, Value: Note (0–127), Value (0–127, polyphonic pressure).
+System Exclusive Events
+Fields: Track, Time, Type, Length, Data...
+Length: Integer 0–228, number of data bytes.
+Data: Length integers (0–255), sent to channel from last Channel_prefix.
+Types:
+Track, Time, System_exclusive, Length, Data...: Full message.
+Track, Time, System_exclusive_packet, Length, Data...: Packetized message.
+Example
+text
+
+Collapse
+
+Wrap
+
+Copy
+0, 0, Header, 1, 2, 480
+1, 0, Start_track
+1, 0, Title_t, "Test"
+1, 0, Tempo, 500000
+1, 0, Time_signature, 4, 2, 24, 8
+1, 0, Program_c, 0, 19
+1, 0, Note_on_c, 0, 60, 80
+1, 960, Note_off_c, 0, 60, 0
+1, 960, End_track
+0, 960, End_of_file
+
+Notes
+Specificity: Every field is explicitly defined (type, range, order). No assumptions left to interpretation.
+Shortened: Cut descriptions to bare rules, removed examples beyond one, trimmed redundancy (e.g., text string details).
+AI-Readable: Strict syntax, no prose, consistent terminology (e.g., "integer" vs. "numeric").

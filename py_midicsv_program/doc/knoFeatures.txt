@@ -1,0 +1,22 @@
+Knob Settings
+Melodic: 80
+Meaning: Mostly diatonic to the key (G minor here), with occasional deviations allowed (e.g., 80% strictness). For low-freq, this applies to the sub-bass (G1), keeping it tonal.
+Applied: Sub at G1 (MIDI 31), kick/snare unpitched but supportive.
+Rhythmic: 80
+Meaning: High rhythmic complexity, syncopated patterns (e.g., two-step D&B groove).
+Applied: Kick on beats 1 and off-beats (e.g., 0, 1680), snare on beat 3 (e.g., 1440), sub pulsing every 2 beats.
+Atmospheric: 80
+Meaning: Long sustains or reverb-like effects, creating depth.
+Applied: Sub sustains for 480–1920 ticks (e.g., 2400–4320), kick/snare short (120 ticks) but resonant.
+Dynamic: 50
+Meaning: Moderate velocity variation, balanced expression (range ~40–100).
+Applied: Kick at 100, snare at 90, sub at 80, within 0–127 MIDI range.
+Energetic: 70
+Meaning: Fast, lively note density, driving feel.
+Applied: Kick every 480 ticks (1 beat), frequent hits (e.g., 10 kicks in 4 bars), sub pulsing regularly.
+Minimal: 50
+Meaning: Moderate density, not overly sparse or cluttered (50% activity).
+Applied: 3 elements (kick, snare, sub), ~15–23 notes in 4 bars, balanced presence.
+Context
+Initial Prompt (April 05, 2025, #17): You requested a full 10-track song with these knobs, but we adjusted focus to low-freq (20–150 Hz) in later iterations (e.g., #27).
+Consistency: These values carried through (e.g., #19 for melody, #22 for 10 tracks, #27 for low-freq full), with Melodic occasionally at 100 (e.g., #17) for strict diatonic tracks like Melody_DnB.csv, but 80 fits the low-freq’s unpitched nature better.
