@@ -238,7 +238,7 @@ def compare_csv_files(original_csv, validation_csv, midi_file):
             with open(filepath, 'r') as f:
                 for line in f:
                     line = line.strip()
-                    if line and not line.startswith('#') and not line.startswith('//'):
+                    if line and not line.startswith('#'):
                         event = parse_csv_line(line)
                         if event:
                             events.append(event)
@@ -248,62 +248,58 @@ def compare_csv_files(original_csv, validation_csv, midi_file):
         original_events = read_file_events(original_csv)
         validation_events = read_file_events(validation_csv)
 
-        # Group events by track
-        def group_by_track(events):
-            tracks = {}
-            for event in events:
-                track_num = event['track']
-                if track_num not in tracks:
-                    tracks[track_num] = []
-                tracks[track_num].append(event)
-            return tracks
-
-        orig_tracks = group_by_track(original_events)
-        val_tracks = group_by_track(validation_events)
-
-        # Compare track counts
-        if len(orig_tracks) != len(val_tracks):
-            print("❌ Different number of tracks:")
-            print(f"Original: {len(orig_tracks)} tracks")
-            print(f"Converted: {len(val_tracks)} tracks")
+        # Check for empty files
+        if not original_events or not validation_events:
+            print("❌ One or both files are empty or could not be parsed.")
             return False
 
-        # Compare events in each track
+        # Compare event counts
+        if len(original_events) != len(validation_events):
+            print("❌ Different number of events:")
+            print(f"Original: {len(original_events)} events")
+            print(f"Converted: {len(validation_events)} events")
+            return False
+
+        # Compare events ignoring track numbers
         differences = []
-        for track_num in orig_tracks:
-            if track_num not in val_tracks:
-                print(f"❌ Track {track_num} missing in validation file")
-                return False
-
-            orig_track = orig_tracks[track_num]
-            val_track = val_tracks[track_num]
-
-            if len(orig_track) != len(val_track):
-                print(f"❌ Different number of events in track {track_num}:")
-                print(f"Original: {len(orig_track)} events")
-                print(f"Converted: {len(val_track)} events")
-                return False
-
-            # Compare events checking both type and params (but not timing)
-            for i, (orig, conv) in enumerate(zip(orig_track, val_track)):
-                if orig['event'] != conv['event'] or orig['params'] != conv['params']:
-                    differences.append((track_num, i + 1, orig, conv))
+        for i, (orig, conv) in enumerate(zip(original_events, validation_events)):
+            # Check if event types match
+            if orig['event'] != conv['event']:
+                differences.append((i + 1, orig, conv, "Event type mismatch"))
+                continue
+                
+            # Check if parameters match for most event types
+            if orig['event'] != 'Header' and orig['params'] != conv['params']:
+                differences.append((i + 1, orig, conv, "Parameter mismatch"))
+                continue
+                
+            # For Header events, compare parameters except track count (index 1)
+            if orig['event'] == 'Header':
+                orig_params = orig['params'].copy()
+                conv_params = conv['params'].copy()
+                
+                # Skip comparison of track count (always different)
+                if len(orig_params) > 1 and len(conv_params) > 1:
+                    if orig_params[0] != conv_params[0] or orig_params[2:] != conv_params[2:]:
+                        differences.append((i + 1, orig, conv, "Header mismatch"))
+                
+            # Check timing (except for Header, Start_track, End_track)
+            if orig['event'] not in ['Header', 'Start_track', 'End_track', 'End_of_file'] and orig['time'] != conv['time']:
+                differences.append((i + 1, orig, conv, "Timing mismatch"))
 
         if differences:
             print(f"\n❌ {len(differences)} event differences found:")
-            for track_num, event_num, orig, conv in differences[:5]:
-                print(f"\nTrack {track_num}, Event {event_num}:")
-                print(f"Original : {orig['event']}, {', '.join(orig['params'])}")
-                print(f"Converted: {conv['event']}, {', '.join(conv['params'])}")
-                if orig['time'] != conv['time']:
-                    print(f"Time difference: {orig['time']} -> {conv['time']}")
+            for event_num, orig, conv, reason in differences[:5]:
+                print(f"\nEvent {event_num} - {reason}:")
+                print(f"Original : Track {orig['track']}, Time {orig['time']}, {orig['event']}, {', '.join(orig['params'])}")
+                print(f"Converted: Track {conv['track']}, Time {conv['time']}, {conv['event']}, {', '.join(conv['params'])}")
             
             if len(differences) > 5:
                 print(f"\n... and {len(differences) - 5} more differences.")
             return False
         else:
-            print("✓ Events match between original and validation files")
-            print("  Note: Timing differences may exist but event content is preserved")
+            print("✓ Conversion validated successfully!")
+            print("  Note: Track numbers may differ but musical content is preserved")
             print(f"\nFiles created:")
             print(f"- MIDI: {os.path.basename(midi_file)}")
             print(f"- Validation CSV: {os.path.basename(validation_csv)}")

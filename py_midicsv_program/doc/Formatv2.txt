@@ -81,3 +81,57 @@ Notes
 Specificity: Every field is explicitly defined (type, range, order). No assumptions left to interpretation.
 Shortened: Cut descriptions to bare rules, removed examples beyond one, trimmed redundancy (e.g., text string details).
 AI-Readable: Strict syntax, no prose, consistent terminology (e.g., "integer" vs. "numeric").
+
+
+"You are Grok, tasked with generating a MIDI CSV file for a song using the py_midicsv format. Follow this template precisely, using the instructions below to ensure correct length and structure for any timeframe with 10 frequency-specific tracks:
+
+- **Format Instructions:**
+  - Multi-line CSV, each record on a new line, spaces after commas (e.g., `0, 0, Header, 1, 11, 96`).
+  - Use absolute time in ticks, no comments, sorted by track then time within each track.
+
+- **Input Parameters:**
+  - BPM: [Insert BPM, e.g., 90], Tempo = 60,000,000 / BPM µs/quarter note (e.g., 666667 for 90 BPM), per MIDI standard.
+  - PPQ: [Insert PPQ, e.g., 96] ticks/quarter note (division), consistent across all tracks.
+  - Duration: [Insert bars, e.g., 90] bars, total ticks = [bars] * [beats/bar, e.g., 4] * [PPQ] (e.g., 90 * 4 * 96 = 34,560 ticks), equals [duration in seconds, e.g., 240] seconds at [BPM] BPM.
+  - Key: [Insert key, e.g., E minor], root note = [e.g., E4=64].
+  - Tracks: 11 (Track 0 for header/footer, Tracks 1–10 for data, each tied to a frequency range).
+  - Structure: [Insert structure, e.g., Intro ([bars1] bars), Verse ([bars2] bars), Chorus ([bars3] bars), Bridge ([bars4] bars), Outro ([bars5] bars)], totaling [bars] bars, distribute events proportionally across [total ticks] ticks.
+  - Feel/Theme: '[Insert, e.g., dark and eerie classical]', influences rhythm, melody, and mood.
+  - Knobs (adjustable, fine-tune the feel):
+    - Melodic: [Insert, e.g., 60] (0–100, higher = more diatonic).
+    - Rhythmic: [Insert, e.g., 75] (0–100, higher = more syncopation).
+    - Atmospheric: [Insert, e.g., 70] (0–100, higher = longer sustains).
+    - Dynamic: [Insert, e.g., 50] (0–100, higher = wider velocity range).
+    - Energetic: [Insert, e.g., 40] (0–100, higher = more notes/bar).
+    - Minimal: [Insert, e.g., 10] (0–100, lower = fewer elements).
+
+- **10 Tracks with Frequency Ranges and General Elements:**
+  1. 20–150 Hz (Low Percussion): Kick (C1=36), Channel 9, patch irrelevant, ~4 notes/bar, short hits (e.g., 120 ticks).
+  2. 20–150 Hz (Bass Foundation): Sub (root note, e.g., [root note]), Channel 0, patch 38, ~1 note/bar, long sustains (e.g., 1920 ticks).
+  3. 150–400 Hz (Mid Bass): Bass (e.g., [root + 12]=[note]–[root + 19]=[note]), Channel 1, patch 39, ~6 notes/bar, 1/8–1/4 patterns.
+  4. 400–2000 Hz (Harmony): Chords (e.g., [root + 24]=[note]–[root + 31]=[note]), Channel 2, patch 89, ~2 notes/bar, sustained (e.g., 3840 ticks).
+  5. 2000–6000 Hz (Lead Melody): Lead (e.g., [root + 36]=[note]–[root + 43]=[note]), Channel 3, patch 81, ~5 notes/bar, 1/8–1/4 runs.
+  6. 2000–6000 Hz (Arpeggio): Arps (e.g., [root + 48]=[note]–[root + 55]=[note]), Channel 4, patch 80, ~8 notes/bar, fast 1/16–1/32 patterns.
+  7. 400–2000 Hz (Ambient Texture): Pads (e.g., [root + 24]=[note]–[root + 31]=[note]), Channel 5, patch 91, ~1 note/bar, very long sustains (e.g., 7680 ticks).
+  8. 6000–16000 Hz (High Percussion): Hats (closed=42, open=46), Channel 9, patch irrelevant, ~6 notes/bar, 1/16–1/8 hits.
+  9. 500–16000 Hz (Effects): Sweeps/FX (e.g., [root + 24]=[note]–[root + 60]=[note]), Channel 6, patch 96, ~0.5 notes/bar, slow risers (e.g., 3840 ticks).
+  10. 2000–6000 Hz (Rhythmic Fills): Breaks (e.g., [root + 48]=[note]), Channel 7, patch 99, ~3 notes/bar, chopped patterns.
+
+- **Length Calculation Instructions:**
+  - Verify Tempo: Use exact integer division (e.g., 60,000,000 // [BPM]) for accuracy (e.g., 666667 for 90 BPM).
+  - Set PPQ: Use [PPQ] consistently (e.g., 96), not 480 unless specified.
+  - Calculate Total Ticks: [bars] * [beats/bar] * [PPQ] = [total ticks] (e.g., 90 * 4 * 96 = 34,560).
+  - Match Duration: [total ticks] / [PPQ] / [beats/bar] * 60 / [BPM] = [duration in seconds] (e.g., 34,560 / 96 / 4 * 60 / 90 = 240s).
+  - Distribute Structure: Assign ticks per section (e.g., Intro: [bars1] * [beats/bar] * [PPQ], Verse: [bars2] * [beats/bar] * [PPQ]), sum to [total ticks].
+  - Absolute Time: Start at 0, increment ticks (e.g., 96, 192), last event < [total ticks], End_track and End_of_file at [total ticks].
+
+- **Music Theory Compliance Instructions:**
+  - Use [key] scale (e.g., E minor: E, F#, G, A, B, C, D), adjust per Melodic knob (e.g., 60 allows chromatic passing tones).
+  - Match [feel/theme] conventions (e.g., classical: ~[notes/bar * bars, e.g., 2 * 90 = 180] events, denser for Energetic > 50).
+  - Adjust note density per Energetic/Minimal knobs and track role (e.g., Lead Melody: Energetic 40 = 5 notes/bar).
+
+- **Output Instructions:**
+  - Plain-text multi-line CSV, no extra text, ending at [total ticks] ticks.
+  - Ensure playback matches [duration in seconds] seconds at [BPM] BPM with [PPQ] PPQ.
+
+Generate a MIDI CSV for a [bars]-bar song with 10 tracks, using the specified settings and 10 frequency-specific tracks. Example to match:

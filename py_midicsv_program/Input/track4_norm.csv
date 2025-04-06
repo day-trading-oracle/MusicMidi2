@@ -1,0 +1,32 @@
+0, 0, Header, 1, 2, 480
+1, 0, Start_track
+1, 0, Title_t, "Dark_Eerie_Track4_4min"
+1, 0, Tempo, 666667
+1, 0, Time_signature, 4, 2, 24, 8
+1, 0, Program_c, 2, 89
+1, 0, Note_on_c, 2, 52, 90
+1, 0, Note_on_c, 2, 55, 90
+1, 0, Note_on_c, 2, 59, 90
+1, 3840, Note_off_c, 2, 52, 0
+1, 3840, Note_off_c, 2, 55, 0
+1, 3840, Note_off_c, 2, 59, 0
+1, 3840, Note_on_c, 2, 50, 85
+1, 3840, Note_on_c, 2, 53, 85
+1, 3840, Note_on_c, 2, 57, 85
+1, 7680, Note_off_c, 2, 50, 0
+1, 7680, Note_off_c, 2, 53, 0
+1, 7680, Note_off_c, 2, 57, 0
+1, 7680, Note_on_c, 2, 52, 90
+1, 7680, Note_on_c, 2, 55, 90
+1, 7680, Note_on_c, 2, 59, 90
+1, 11520, Note_off_c, 2, 52, 0
+1, 11520, Note_off_c, 2, 55, 0
+1, 11520, Note_off_c, 2, 59, 0
+1, 11520, Note_on_c, 2, 48, 85
+1, 11520, Note_on_c, 2, 52, 85
+1, 11520, Note_on_c, 2, 55, 85
+1, 15360, Note_off_c, 2, 48, 0
+1, 15360, Note_off_c, 2, 52, 0
+1, 15360, Note_off_c, 2, 55, 0
+1, 172800, End_track
+0, 172800, End_of_file
