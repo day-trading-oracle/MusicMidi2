@@ -1,0 +1,199 @@
+0, 0, Header, 1, 11, 480
+1, 0, Start_track
+1, 0, Title_t, "Full_DnB_Song"
+1, 0, Tempo, 461538
+1, 0, Time_signature, 4, 2, 24, 8
+1, 0, End_track
+
+2, 0, Start_track
+2, 0, Channel_prefix, 9
+2, 0, Note_on_c, 9, 36, 100
+2, 120, Note_off_c, 9, 36, 0
+2, 1440, Note_on_c, 9, 38, 90
+2, 1560, Note_off_c, 9, 38, 0
+2, 1680, Note_on_c, 9, 36, 100
+2, 1800, Note_off_c, 9, 36, 0
+2, 30720, Note_on_c, 9, 36, 100
+2, 30840, Note_off_c, 9, 36, 0
+2, 32160, Note_on_c, 9, 38, 90
+2, 32280, Note_off_c, 9, 38, 0
+2, 92160, Note_on_c, 9, 36, 100
+2, 92280, Note_off_c, 9, 36, 0
+2, 93600, Note_on_c, 9, 38, 90
+2, 93720, Note_off_c, 9, 38, 0
+2, 153600, Note_on_c, 9, 36, 80
+2, 153720, Note_off_c, 9, 36, 0
+2, 155040, Note_on_c, 9, 38, 70
+2, 155160, Note_off_c, 9, 38, 0
+2, 184320, Note_on_c, 9, 36, 90
+2, 184440, Note_off_c, 9, 36, 0
+2, 185760, Note_on_c, 9, 38, 80
+2, 185880, Note_off_c, 9, 38, 0
+2, 215040, Note_on_c, 9, 36, 100
+2, 215160, Note_off_c, 9, 36, 0
+2, 216480, Note_on_c, 9, 38, 90
+2, 216600, Note_off_c, 9, 38, 0
+2, 249480, Note_off_c, 9, 36, 0
+2, 249600, End_track
+
+3, 0, Start_track
+3, 0, Program_c, 1, 38
+3, 0, Note_on_c, 1, 31, 80
+3, 1920, Note_off_c, 1, 31, 0
+3, 1920, Note_on_c, 1, 31, 80
+3, 3840, Note_off_c, 1, 31, 0
+3, 30720, Note_on_c, 1, 31, 90
+3, 32640, Note_off_c, 1, 31, 0
+3, 92160, Note_on_c, 1, 31, 100
+3, 94080, Note_off_c, 1, 31, 0
+3, 153600, Note_on_c, 1, 31, 70
+3, 157440, Note_off_c, 1, 31, 0
+3, 184320, Note_on_c, 1, 31, 80
+3, 186240, Note_off_c, 1, 31, 0
+3, 215040, Note_on_c, 1, 31, 100
+3, 216960, Note_off_c, 1, 31, 0
+3, 247680, Note_off_c, 1, 31, 0
+3, 249600, End_track
+
+4, 0, Start_track
+4, 0, Program_c, 2, 39
+4, 30720, Note_on_c, 2, 38, 90
+4, 30840, Note_off_c, 2, 38, 0
+4, 30840, Note_on_c, 2, 43, 85
+4, 30960, Note_off_c, 2, 43, 0
+4, 92160, Note_on_c, 2, 38, 100
+4, 92280, Note_off_c, 2, 38, 0
+4, 184320, Note_on_c, 2, 43, 80
+4, 184440, Note_off_c, 2, 43, 0
+4, 215040, Note_on_c, 2, 38, 100
+4, 215160, Note_off_c, 2, 38, 0
+4, 249540, Note_off_c, 2, 38, 0
+4, 249600, End_track
+
+5, 0, Start_track
+5, 0, Program_c, 3, 89
+5, 0, Note_on_c, 3, 55, 70
+5, 0, Note_on_c, 3, 58, 70
+5, 0, Note_on_c, 3, 62, 70
+5, 3840, Note_off_c, 3, 55, 0
+5, 3840, Note_off_c, 3, 58, 0
+5, 3840, Note_off_c, 3, 62, 0
+5, 30720, Note_on_c, 3, 55, 80
+5, 30720, Note_on_c, 3, 58, 80
+5, 34560, Note_off_c, 3, 55, 0
+5, 34560, Note_off_c, 3, 58, 0
+5, 92160, Note_on_c, 3, 62, 90
+5, 92160, Note_on_c, 3, 67, 90
+5, 96000, Note_off_c, 3, 62, 0
+5, 96000, Note_off_c, 3, 67, 0
+5, 153600, Note_on_c, 3, 55, 60
+5, 153600, Note_on_c, 3, 58, 60
+5, 157440, Note_off_c, 3, 55, 0
+5, 157440, Note_off_c, 3, 58, 0
+5, 184320, Note_on_c, 3, 62, 70
+5, 184320, Note_on_c, 3, 67, 70
+5, 188160, Note_off_c, 3, 62, 0
+5, 188160, Note_off_c, 3, 67, 0
+5, 215040, Note_on_c, 3, 55, 90
+5, 215040, Note_on_c, 3, 58, 90
+5, 218880, Note_off_c, 3, 55, 0
+5, 218880, Note_off_c, 3, 58, 0
+5, 249600, End_track
+
+6, 0, Start_track
+6, 0, Program_c, 4, 81
+6, 30720, Note_on_c, 4, 67, 90
+6, 31200, Note_off_c, 4, 67, 0
+6, 31200, Note_on_c, 4, 69, 85
+6, 31680, Note_off_c, 4, 69, 0
+6, 92160, Note_on_c, 4, 67, 100
+6, 92640, Note_off_c, 4, 67, 0
+6, 184320, Note_on_c, 4, 74, 80
+6, 18880, Note_off_c, 4, 74, 0
+6, 215040, Note_on_c, 4, 67, 100
+6, 215520, Note_off_c, 4, 67, 0
+6, 249600, End_track
+
+7, 0, Start_track
+7, 0, Program_c, 5, 80
+7, 92160, Note_on_c, 5, 72, 80
+7, 92190, Note_off_c, 5, 72, 0
+7, 92190, Note_on_c, 5, 75, 80
+7, 92220, Note_off_c, 5, 75, 0
+7, 215040, Note_on_c, 5, 72, 90
+7, 215070, Note_off_c, 5, 72, 0
+7, 249600, End_track
+
+8, 0, Start_track
+8, 0, Program_c, 6, 91
+8, 0, Note_on_c, 6, 60, 60
+8, 0, Note_on_c, 6, 63, 60
+8, 0, Note_on_c, 6, 67, 60
+8, 7680, Note_off_c, 6, 60, 0
+8, 7680, Note_off_c, 6, 63, 0
+8, 7680, Note_off_c, 6, 67, 0
+8, 30720, Note_on_c, 6, 60, 70
+8, 30720, Note_on_c, 6, 63, 70
+8, 38400, Note_off_c, 6, 60, 0
+8, 38400, Note_off_c, 6, 63, 0
+8, 92160, Note_on_c, 6, 67, 80
+8, 92160, Note_on_c, 6, 72, 80
+8, 99840, Note_off_c, 6, 67, 0
+8, 99840, Note_off_c, 6, 72, 0
+8, 153600, Note_on_c, 6, 60, 60
+8, 153600, Note_on_c, 6, 63, 60
+8, 161280, Note_off_c, 6, 60, 0
+8, 161280, Note_off_c, 6, 63, 0
+8, 184320, Note_on_c, 6, 67, 70
+8, 184320, Note_on_c, 6, 72, 70
+8, 192000, Note_off_c, 6, 67, 0
+8, 192000, Note_off_c, 6, 72, 0
+8, 215040, Note_on_c, 6, 60, 80
+8, 215040, Note_on_c, 6, 63, 80
+8, 222720, Note_off_c, 6, 60, 0
+8, 222720, Note_off_c, 6, 63, 0
+8, 249600, End_track
+
+9, 0, Start_track
+9, 0, Channel_prefix, 9
+9, 0, Note_on_c, 9, 42, 70
+9, 120, Note_off_c, 9, 42, 0
+9, 30720, Note_on_c, 9, 46, 80
+9, 30960, Note_off_c, 9, 46, 0
+9, 92160, Note_on_c, 9, 42, 90
+9, 92280, Note_off_c, 9, 42, 0
+9, 153600, Note_on_c, 9, 46, 60
+9, 153840, Note_off_c, 9, 46, 0
+9, 184320, Note_on_c, 9, 42, 70
+9, 184440, Note_off_c, 9, 42, 0
+9, 215040, Note_on_c, 9, 46, 90
+9, 215280, Note_off_c, 9, 46, 0
+9, 249600, End_track
+
+10, 0, Start_track
+10, 0, Program_c, 8, 96
+10, 0, Note_on_c, 8, 60, 60
+10, 7680, Note_off_c, 8, 60, 0
+10, 92160, Note_on_c, 8, 65, 70
+10, 92400, Note_off_c, 8, 65, 0
+10, 153600, Note_on_c, 8, 60, 60
+10, 161280, Note_off_c, 8, 60, 0
+10, 184320, Note_on_c, 8, 60, 70
+10, 192000, Note_off_c, 8, 60, 0
+10, 215040, Note_on_c, 8, 65, 80
+10, 215280, Note_off_c, 8, 65, 0
+10, 249600, End_track
+
+11, 0, Start_track
+11, 0, Program_c, 10, 99
+11, 30720, Note_on_c, 10, 72, 80
+11, 30840, Note_off_c, 10, 72, 0
+11, 92160, Note_on_c, 10, 72, 90
+11, 92280, Note_off_c, 10, 72, 0
+11, 184320, Note_on_c, 10, 72, 70
+11, 184440, Note_off_c, 10, 72, 0
+11, 215040, Note_on_c, 10, 72, 90
+11, 215160, Note_off_c, 10, 72, 0
+11, 249600, End_track
+
+0, 249600, End_of_file

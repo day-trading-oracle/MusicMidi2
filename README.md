@@ -14,10 +14,7 @@ $ pip install py_midicsv
 
 Alternatively you can build the package by cloning this repository and installing via [poetry](https://github.com/sdispater/poetry):
 ```bash
-$ git clone https://github.com/timwedde/py_midicsv.git
-$ cd py_midicsv/
-$ poetry install
-```
+
 
 ## Usage
 
